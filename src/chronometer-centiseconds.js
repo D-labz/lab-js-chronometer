@@ -45,9 +45,9 @@ class Chronometer {
     // ... your code goes here
     if (this.currentTime === 0) return 0;
     let centiSeconds = 0;
-    let noMinutes = currentTime / 6000 - this.getMinutes();
+    let noMinutes = this.currentTime / 6000 - this.getMinutes();
     let noSeconds = noMinutes * 60 - this.getSeconds();
-    let noSeconds2 = (currentTime / 100 - this.getSeconds()) * 100;
+    let noSeconds2 = (this.currentTime / 100 - this.getSeconds()) * 100;
 
     if (this.currentTime >= 6000) {
       centiSeconds = Math.round(noSeconds * 100 - noSeconds);
@@ -86,9 +86,12 @@ class Chronometer {
 
   split() {
     // ... your code goes here
+
     let split = `${this.computeTwoDigitNumber(
       this.getMinutes()
-    )}:${this.computeTwoDigitNumber(this.getSeconds())}`;
+    )}:${this.computeTwoDigitNumber(
+      this.getSeconds()
+    )}.${this.computeTwoDigitNumber(this.getCentiseconds())}`;
     return split;
   }
 }
